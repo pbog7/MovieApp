@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    compileSdk compileSdkVer
+
+    defaultConfig {
+        applicationId "com.example.movieapp"
+        minSdk minSdkVer
+        targetSdk targetSdkVer
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled = true
+        kapt{
+            javacOptions {
+                // These options are normally set automatically via the Hilt Gradle plugin, but we
+                // set them manually to workaround a bug in the Kotlin 1.5.20
+                option("-Adagger.fastInit=ENABLED")
+                option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+            }
+        }
+        packagingOptions {
+            exclude 'META-INF/gradle/incremental.annotation.processors'
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+}
+
+dependencies {
+    kapt compilers.values()
+    implementation lifecycle.values()
+    implementation navigation.values()
+    implementation common.values()
+    implementation app.values()
+    implementation project(':common')
+    implementation project(':moviesScreen')
+    implementation project(':favoritesScreen')
+    implementation project(':searchScreen')
+    implementation project(':movieReviews')
+
+}
+kapt {
+    correctErrorTypes true
+}

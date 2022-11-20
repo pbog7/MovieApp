@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/movies">
+
+    <include app:graph="@navigation/movies" />
+    <include app:graph="@navigation/search" />
+    <include app:graph="@navigation/favorites" />
+
+    <action
+        android:id="@+id/action_global_movie_reviews_fragment"
+        app:destination="@id/movieReviewsFragment" />
+    <fragment
+        android:id="@id/movieReviewsFragment"
+        android:name="com.example.moviereviewsscreen.MovieReviewsFragment"
+        tools:layout="@layout/movie_reviews_fragment_layout" />
+</navigation>
