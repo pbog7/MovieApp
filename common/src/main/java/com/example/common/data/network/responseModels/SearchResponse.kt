@@ -10,7 +10,7 @@ data class SearchResponse(
     @SerializedName("expression")
     val expression: String,
     @SerializedName("results")
-    val results: List<SearchResultDTO>,
+    val results: List<SearchResultDTO>?,
     @SerializedName("errorMessage")
     val errorMessage: String
 )

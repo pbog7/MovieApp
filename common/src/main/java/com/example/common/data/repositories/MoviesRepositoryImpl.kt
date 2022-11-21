@@ -86,9 +86,9 @@ class MoviesRepositoryImpl @Inject constructor(
         with(response) {
             if (isSuccessful) {
                 body()?.run {
-                    results.map {
+                    results?.map {
                         it.toMovie()
-                    }.also {
+                    }?.also {
                         if (it.isEmpty()) {
                             if (errorMessage.isEmpty()) {
                                 emit(CustomResult.Failure(EmptyMoviesList("The movies list is empty !")))
@@ -99,6 +99,7 @@ class MoviesRepositoryImpl @Inject constructor(
                             emit(CustomResult.Success(it))
                         }
                     }
+                    emit(CustomResult.Failure(errorMessage))
                 }
             } else {
                 emit(CustomResult.Failure(response.errorBody()))

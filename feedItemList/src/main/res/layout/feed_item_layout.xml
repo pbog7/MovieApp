@@ -8,11 +8,9 @@
 
     <ImageView
         android:id="@+id/itemImage"
-        android:layout_width="240dp"
+        android:layout_width="@dimen/feed_item_image_width"
         android:layout_height="@dimen/feed_item_image_height"
         android:contentDescription="image"
-        android:background="@android:color/holo_purple"
-        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="feed_item_image_width">160dp</dimen>
-    <dimen name="feed_item_image_height">64dp</dimen>
+    <dimen name="feed_item_image_height">96dp</dimen>
     <dimen name="ad_item_height">128dp</dimen>
     <dimen name="adTitleBottomMargin">16dp</dimen>
 </resources>
